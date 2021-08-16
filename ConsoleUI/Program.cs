@@ -11,7 +11,7 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             // BrandTest();
-            //GetCarDetails();
+            GetCarDetails();
             //GetCarsByColorId();
 
         }
@@ -21,17 +21,18 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             foreach (var car in carManager.GetCarsByColorId(2))
             {
-                Console.WriteLine(car.Id);
+                Console.WriteLine(car.CarId);
             }
         }
 
+        //CarName, BrandName, ColorName, DailyPrice
         private static void GetCarDetails()
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
             foreach (var car in carManager.GetCarDetails())
             {
-                Console.WriteLine(car.CarId +" " + car.BrandName +" "+ car.DailyPrice + " " + car.ColorName);
+                Console.WriteLine(car.CarName +" " + car.BrandName +" "+ car.DailyPrice + " " + car.ColorName);
             } 
         }
 

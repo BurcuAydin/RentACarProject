@@ -36,6 +36,25 @@ namespace Business.Concrete
         {
             return _carDal.GetProductDetails();
         }
+
+        public List<Car> GetCarsByDailyPrice(decimal min, decimal max)
+        {
+            return _carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max);
+        }
+
+        public void Add(Car car)
+        {
+            if(car.CarName.Length >= 2 && car.DailyPrice > 0)
+            {
+                _carDal.Add(car);
+            }
+            else
+            {
+                Console.WriteLine("Hatalı giriş.");
+            }
+
+            
+        }
     }
 }
 

@@ -17,10 +17,10 @@ namespace DataAccess.Concrete
         {
             _cars = new List<Car>
             {
-                new Car{Id=1,BrandId=1,ColorId=2,DailyPrice=150,ModelYear=2006,Description="Manual,2x Persons" },
-                new Car{Id=2,BrandId=2,ColorId=3,DailyPrice=300,ModelYear=2020,Description="2x Luggage Quantity" },
-                new Car{Id=3,BrandId=2,ColorId=2,DailyPrice=250,ModelYear=2019,Description="Manual,5x Persons" },
-                new Car{Id=4,BrandId=1,ColorId=1,DailyPrice=200,ModelYear=2017,Description="Manual,5x Persons" }
+                new Car{CarId=1,BrandId=1,ColorId=2,DailyPrice=150,ModelYear=2006,Description="Manual,2x Persons" },
+                new Car{CarId=2,BrandId=2,ColorId=3,DailyPrice=300,ModelYear=2020,Description="2x Luggage Quantity" },
+                new Car{CarId=3,BrandId=2,ColorId=2,DailyPrice=250,ModelYear=2019,Description="Manual,5x Persons" },
+                new Car{CarId=4,BrandId=1,ColorId=1,DailyPrice=200,ModelYear=2017,Description="Manual,5x Persons" }
                 
 
             };
@@ -34,7 +34,7 @@ namespace DataAccess.Concrete
         {
             //LINQ
             
-            Car carToDelete = _cars.SingleOrDefault(c=>c.Id == car.Id);
+            Car carToDelete = _cars.SingleOrDefault(c=>c.CarId == car.CarId);
             _cars.Remove(carToDelete);
         }
 
@@ -50,7 +50,7 @@ namespace DataAccess.Concrete
 
         public List<Car> GetById(int Id)
         {
-            return _cars.Where(c=>c.Id == Id).ToList();
+            return _cars.Where(c=>c.CarId == Id).ToList();
         }
 
         public List<Car> GetById(Expression<Func<Car, bool>> filter)
@@ -63,14 +63,15 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public void Update(Car car)
+        public void Update(Car car) //Ekrandan gelen data car, güncel hali bu olacak.
         {
-            Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
+            Car carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.DailyPrice = car.DailyPrice;
             carToUpdate.Description = car.Description;
             carToUpdate.ModelYear = car.ModelYear;
+            carToUpdate.CarName = car.CarName;
         }
 
         Car IEntityRepository<Car>.GetById(Expression<Func<Car, bool>> filter)
