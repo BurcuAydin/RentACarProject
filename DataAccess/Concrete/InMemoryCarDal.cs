@@ -74,7 +74,7 @@ namespace DataAccess.Concrete
             carToUpdate.CarName = car.CarName;
         }
 
-        Car IEntityRepository<Car>.GetById(Expression<Func<Car, bool>> filter)
+        Car IEntityRepository<Car>.Get(Expression<Func<Car, bool>> filter)
         {
             throw new NotImplementedException();
         }

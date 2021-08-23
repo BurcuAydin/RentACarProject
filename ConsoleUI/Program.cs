@@ -10,31 +10,57 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            // BrandTest();
-            GetCarDetails();
-            //GetCarsByColorId();
 
+            //AddCar();
+            //GetAll();
+            // BrandTest();
+            // GetCarDetails();
+            //GetCarsByColorId();
+            
         }
 
-        private static void GetCarsByColorId()
+        private static void AddCar()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarsByColorId(2))
-            {
-                Console.WriteLine(car.CarId);
-            }
+            Car car = new Car();
+            car.CarId = 5;
+            car.CarName = "Clio";
+            car.ColorId = 2;
+            car.DailyPrice = 200;
+            car.Description = "asdf";
+            car.ModelYear = 2007;
+
+            carManager.Add(car);
         }
+
+        //private static void GetAll()
+        //{
+        //    CarManager carManager = new CarManager(new EfCarDal());
+        //    foreach (var car in carManager.GetAll())
+        //    {
+        //        Console.WriteLine(car.CarName);
+        //    }
+        //}
+
+        //private static void GetCarsByColorId()
+        //{
+        //    CarManager carManager = new CarManager(new EfCarDal());
+        //    foreach (var car in carManager.GetCarsByColorId(2))
+        //    {
+        //        Console.WriteLine(car.CarId);
+        //    }
+        //}
 
         //CarName, BrandName, ColorName, DailyPrice
-        private static void GetCarDetails()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
+        //private static void GetCarDetails()
+        //{
+        //    CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetCarDetails())
-            {
-                Console.WriteLine(car.CarName +" " + car.BrandName +" "+ car.DailyPrice + " " + car.ColorName);
-            } 
-        }
+        //    foreach (var car in carManager.GetCarDetails())
+        //    {
+        //        Console.WriteLine(car.CarName +" " + car.BrandName +" "+ car.DailyPrice + " " + car.ColorName);
+        //    } 
+        //}
 
         private static void BrandTest()
         {
