@@ -65,9 +65,9 @@ namespace ConsoleUI
         private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
+           // foreach (var brand in brandManager.GetAll())
             {
-                Console.WriteLine(brand.BrandId + " " + brand.BrandName);
+               // Console.WriteLine(brand.BrandId + " " + brand.BrandName);
             }
         }
     }

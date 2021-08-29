@@ -1,9 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,7 +30,7 @@ namespace Business.Concrete
         }
         public IDataResult<Car> GetByCarId(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c=> c.CarId == carId));
+            return new SuccessDataResult<Car>(_carDal.Get(c=> c.CarId == carId),"Araba listelendi.");
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
@@ -51,10 +54,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if(car.CarName.Length < 2 && car.DailyPrice <= 0)
-            {
-                return new ErrorResult(Messages.CarNameInvalid);
-            }
+            ValidationTool.Validate(new CarValidator(), car);
             _carDal.Add(car);
             return new SuccessResult(Messages.CarAdded);
             
