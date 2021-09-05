@@ -17,5 +17,7 @@ namespace Business.Constants
         public static string CarImageAdded="Araba fotoğrafı eklendi.";
         public static string CountOfImageLimitError="Bir araca en fazla 5 fotoğraf eklenebilir.";
         public static string CarImageDeleted="Araca ait fotoğraf silindi.";
+
+        public static string BrandAdded="Marka eklendi.";
     }
 }
