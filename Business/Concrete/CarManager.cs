@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -44,7 +45,7 @@ namespace Business.Concrete
         }
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetProductDetails());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
         public IDataResult<List<Car>> GetCarsByDailyPrice(decimal min, decimal max)
@@ -52,6 +53,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max));
         }
 
+        [ValidationAspect(typeof(CarValidator))]  //2.58
         public IResult Add(Car car)
         {
             ValidationTool.Validate(new CarValidator(), car);
@@ -71,7 +73,17 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        
+        public IDataResult<List<CarDetailDto>> GetByModelYear(int year)
+        {
+           
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(p=> p.ModelYear == year));
 
+        }
+
+
+        
+        
     }
 }
 

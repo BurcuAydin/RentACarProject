@@ -6,7 +6,10 @@ using System.Text;
 
 namespace Business.ValidationRules.FluentValidation
 {
-   public class BrandValidator : AbstractValidator<Brand>
+    public class CarImageValidator :AbstractValidator<CarImage>
     {
+        public CarImageValidator() {
+            RuleFor(p => p.CarId).NotEmpty();
+                }
     }
 }
