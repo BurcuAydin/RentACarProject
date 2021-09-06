@@ -19,5 +19,9 @@ namespace Business.Constants
         public static string CarImageDeleted="Araca ait fotoğraf silindi.";
 
         public static string BrandAdded="Marka eklendi.";
+        public static string CarAlreadyRented="Araç kiralanmaya uygun değil.";
+        public static string CarRented="Araç kiralandı.";
+        internal static string EmailAlreadyExists= "Bu e-posta zaten var";
+        public static string UserAdded = "Kullanıcı eklendi.";
     }
 }

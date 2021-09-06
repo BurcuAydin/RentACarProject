@@ -9,7 +9,7 @@ namespace Business.ValidationRules.FluentValidation
     public class CarImageValidator :AbstractValidator<CarImage>
     {
         public CarImageValidator() {
-            RuleFor(p => p.CarId).NotEmpty();
-                }
+           
+          }
     }
 }

@@ -40,7 +40,7 @@ namespace Business.Concrete
 
         public IResult Delete(CarImage carImage)
         {
-            DeleteImage(carImage.CarImageId);
+            //DeleteImage(carImage.CarImageId);
 
             _carImageDal.Delete(carImage);
             return new SuccessResult(Messages.CarImageDeleted);
@@ -95,7 +95,8 @@ namespace Business.Concrete
 
             File.Delete(Directory.GetParent(Directory.GetCurrentDirectory()) + path);
         }
+    }
 
     }
-}
+
 
